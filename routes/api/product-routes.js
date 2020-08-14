@@ -18,6 +18,10 @@ router.get('/', (req, res) => {
     ]
   })
   .then((productData) => res.status(200).json(productData))
+  .catch((err) => {
+    console.log(err);
+    res.status(400).json(err);
+  });
 });
 
 // get one product
@@ -38,6 +42,10 @@ router.get('/:id', (req, res) => {
     ]
   })
   .then((productData) => res.status(200).json(productData))
+  .catch((err) => {
+    console.log(err);
+    res.status(400).json(err);
+  });
 });
 
 // create new product
