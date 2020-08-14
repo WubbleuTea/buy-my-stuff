@@ -58,7 +58,6 @@ router.put('/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-
   })
   .then((tagData) => res.status(200).json(tagData))
   .catch((err) => {
@@ -79,7 +78,7 @@ router.delete('/:id', (req, res) => {
     }
       res.json(tagData);
   })
-  .catch(err => {
+  .catch((err) => {
       console.log(err);
       res.status(500).json(err);
   });
