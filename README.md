@@ -27,10 +27,7 @@ Creates a quality back-end for an ecommerce website (this is a static image).
 ![Creates a quality back-end for an ecommerce website](/public/assets/images/sample.jpeg)  
 
 Video Demo Youtube (if viewing online, the image is a link)   
-[![Video Demo: Youtube](/public/assets/images/youtube.png)](https://www.youtube.com/watch?v=LjcwEa7bCyg&feature=youtu.be)  
-
-Video Demo File (if viewing from desktop with cloned repo, the image is a link)   
-[![Video Demo: File](/public/assets/images/video.png)](/public/assets/video/demo.mp4)  
+[![Video Demo: Youtube](/public/assets/images/youtube.png)](https://www.youtube.com/watch?v=vElrGbATCK4)    
 
 ## Licensing  
 None  
