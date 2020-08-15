@@ -2,9 +2,12 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection.js');
 
+// Initialize Category model (table) by extending off Sequelize's Model class
 class Category extends Model {}
 
+// set up fields and rules for Category model
 Category.init(
+  //define columns
   {
     id: { 
       type: DataTypes.INTEGER,

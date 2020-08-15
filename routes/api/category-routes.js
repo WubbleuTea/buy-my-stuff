@@ -1,11 +1,10 @@
 const router = require('express').Router();
-const { Category, Product, ProductTag } = require('../../models');
+const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
 
-router.get('/', (req, res) => {
   // find all categories
-  // be sure to include its associated Products
+router.get('/', (req, res) => {
   Category.findAll({
     include: [
       Product
@@ -18,9 +17,8 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/:id', (req, res) => {
   // find one category by its `id` value
-  // be sure to include its associated Products
+router.get('/:id', (req, res) => {
   Category.findAll({
     where: {
       id: req.params.id
@@ -38,8 +36,8 @@ router.get('/:id', (req, res) => {
   });
 });
 
+// creates a new category
 router.post('/', (req, res) => {
-  // create a new category
   Category.create({
     category_name: req.body.category_name
   })
@@ -50,8 +48,9 @@ router.post('/', (req, res) => {
   });
 });
 
+// update a category by its `id` value
 router.put('/:id', (req, res) => {
-  // update a category by its `id` value
+
   Category.update(
     {
       category_name: req.body.category_name
@@ -68,12 +67,14 @@ router.put('/:id', (req, res) => {
   });
 });
 
+// delete a category
 router.delete('/:id', (req, res) => {
-  // delete a category by its `id` value
+  // delete a parent products by category `id` value
   Product.destroy({
     where: {
       category_id: req.params.id
     }
+  // delete a category by its `id` value
   }).then(() => {
     Category.destroy({
       where: {
