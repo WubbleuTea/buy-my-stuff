@@ -9,7 +9,8 @@ router.get('/', (req, res) => {
   Tag.findAll({
     include: [
       {
-        model: Product
+        model: Product,
+        through: ProductTag
       }
     ]
   })
@@ -29,7 +30,8 @@ router.get('/:id', (req, res) => {
     },
     include: [
       {
-        model: Product
+        model: Product,
+        through: ProductTag
       }
     ]
   })
@@ -54,11 +56,16 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
-  Tag.update(req.body, {
-    where: {
-      id: req.params.id
-    },
-  })
+  Tag.update(
+    {
+      tag_name: req.body.tag_name
+    }, 
+    {
+      where: {
+        id: req.params.id
+      },
+    }
+  )
   .then((tagData) => res.status(200).json(tagData))
   .catch((err) => {
     console.log(err);
@@ -68,8 +75,10 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   // delete on tag by its `id` value
-  Tag.delete({
-    where: req.params.id
+  Tag.destroy({
+    where: {
+      id: req.params.id
+    }
   })
   .then(tagData => {
     if (!tagData) {
